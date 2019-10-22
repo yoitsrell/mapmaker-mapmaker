@@ -1,6 +1,8 @@
 const {
   doubleAll,
+  absoluteValues,
   yelledGreetings,
+  changeToInitials,
   doubleOdd,
   upperCaseFirstLetters,
   add1ToLeft,
@@ -14,9 +16,33 @@ describe('doubleAll', () => {
   })
 })
 
+describe('absoluteValues', () => {
+  it(`returns numbers unchanged if they're positive`, () => {
+    expect(absoluteValues([1, 3, 1000])).toEqual([1, 3, 1000]);
+    expect(absoluteValues([1, 5, 100])).toEqual([1, 5, 100]);
+  })
+  
+  it(`returns positive versions of negative numbers`, () => {
+    expect(absoluteValues([-1, -3, 1000])).toEqual([1, 3, 1000]);
+    expect(absoluteValues([1, -5, 100])).toEqual([1, 5, 100]);
+  })
+
+  it(`can handle zeroes`, () => {
+    expect(absoluteValues([0, 0, 0])).toEqual([0, 0, 0]);
+    expect(absoluteValues([0])).toEqual([0]);
+  })
+})
+
 describe('yelledGreetings', () => {
   it(`adds an exclamation point to the end of each string`, () => {
     expect(yelledGreetings(['hello', 'there', 'you absolute fiend'])).toEqual(['hello!', 'there!', 'you absolute fiend!']);
+  })
+})
+
+describe('changeToInitials', () => {
+  it(`will return the first letters from each word`, () => {
+    expect(changeToInitials(['Colin Jaffe', 'Mesuara Kaleziq'])).toEqual(['CJ', 'MK'])
+    expect(changeToInitials(['Larry Bird', 'Robert Parrish'])).toEqual(['LB', 'RP'])
   })
 })
 
